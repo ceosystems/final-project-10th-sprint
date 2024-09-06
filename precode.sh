@@ -20,7 +20,7 @@ echo "$1, привет!" >> task/dir2/hello.sh
 # устанавливаем для task/dir2/hello.sh права rwxrw-r--
 chmod 764 dir2/hello.sh
 # сохраняем список файлов task/dir2 в task/dir2/list.txt
-ls /path/to/task/dir2 > /path/to/task/dir2/list.txt
+ls dir2 > dir2/list.txt
 # копируем содержимое каталога task/dir2 в каталог task/dir3/dir4
 cp -R /path/to/task/dir2/* /path/to/task/dir3/dir4
 # записываем в task/dir1/summary.txt список файлов с расширением *.txt
