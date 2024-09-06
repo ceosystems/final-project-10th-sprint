@@ -8,27 +8,26 @@
 #       dir4
 mkdir -p task/dir1 task/dir2 task/dir3/dir4
 # изменяем текущую директорию на task
-cd task
+cd ./task
 # создаём пустой файл task/dir2/empty
 touch dir2/empty
 # создаём файл task/dir2/hello.sh с таким содержанием:
 # #!/bin/bash
-echo "!/bin/bash" > task/dir2/hello.sh
 # echo "$1, привет!"
-echo "$1, привет!" >> task/dir2/hello.sh
+echo -e '#!/bin/bash\necho "$1, привет!"' > dir2/hello.sh
 
 # устанавливаем для task/dir2/hello.sh права rwxrw-r--
 chmod 764 dir2/hello.sh
 # сохраняем список файлов task/dir2 в task/dir2/list.txt
 ls dir2 > dir2/list.txt
 # копируем содержимое каталога task/dir2 в каталог task/dir3/dir4
-cp -R /path/to/task/dir2/* /path/to/task/dir3/dir4
+cp -r dir2/. dir3/dir4
 # записываем в task/dir1/summary.txt список файлов с расширением *.txt
 # находящихся в task, включая поддиректории
-find /path/to/task -type f -name "*.txt" | tee /path/to/task/dir1/summary.txt
+find . -type f -name '*.txt' > dir1/summary.txt
 
 # дописываем в task/dir1/summary.txt содержимое task/dir2/list.txt
-cat /path/to/task/dir2/list.txt >> /path/to/task/dir1/summary.txt
+cat dir2/list.txt >> dir1/summary.txt
 # определяем переменную окружения NAME со значением "Всем студентам"
 export NAME="Всем студентам"
 
